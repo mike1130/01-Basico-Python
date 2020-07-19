@@ -1,0 +1,43 @@
+cd (regresa a la carpeta origen del sistema)
+cd (carpeta donde se quiere entrar)/
+ls -al (permite ver los archivos de una carpeta sean ocultos o no)
+mkdir (nombre de la carpeta que se desea crear)
+vim (nombre archivo plano a crear o modificar).(extensión del archivo)
+
+git init (crear repositorio en carpeta local)
+git status
+git add . (Añade todos los archivos del repositorio al stagging)
+git commit -a -m “(comentar que se hizo de nuevo)”
+git log (ver el historial de cambios de la rama)
+
+git branch (permite ver las ramas creadas en el repositorio local)
+git branch (nombre de la rama a crear)
+git checkout (rama a la que se desea cambiar)
+
+(Fusionar rama secundaria con principal)
+git checkout ‘master’
+Git merge (rama que se desea fusionar con la master o en su defecto la que se coloca antes)
+
+git tag -a (nombre del tag) -m “(mensaje del tag)”
+git push origin --tags (enviar tags a github)
+git tag -d (nombre del tag a eliminar)
+git push origin :refs/tags/(nombre del tag eliminado para actualizar en GitHub)
+
+alias arbolito=“git log --all --graph --decorate --online”
+arbolito (permite ver la historia de la rama principal y ramas secundarias)
+
+git remote add (repositorio local a crear donde se traerán los archivos del siguiente enlace de github) (enlace de GitHub a clonar)
+
+alias github_relate=“git remote add origin “
+github_relate (link de github)
+
+alias github_allow=“git pull origin master --allow-unrelated-histories”
+github_allow (permite realizar el primer merge entre git y github)
+
+git remote -v (permite ver a cual dirección apunta el Origin)
+
+git pull origin (rama en GitHub que se desea traer a local y actualizar la que esta)
+git push origin (rama en Git local que se desea exportar a repositorio en GitHub)
+
+git clone (enlace de GitHub de repositorio publico de otra persona para ser copiado en el local)
+
