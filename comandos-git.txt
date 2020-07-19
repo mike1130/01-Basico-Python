@@ -1,8 +1,12 @@
-cd (regresa a la carpeta origen del sistema)
+Ctrl + L (limpia la consola)
+cd (change directory = regresa a la carpeta origen del sistema)
 cd (carpeta donde se quiere entrar)/
+cd .. (regresa a la carpeta anterior)
+ls (list = ver las carpetas y archivos de la carpeta)
 ls -al (permite ver los archivos de una carpeta sean ocultos o no)
-mkdir (nombre de la carpeta que se desea crear)
+mkdir (make directory = nombre de la carpeta que se desea crear)
 vim (nombre archivo plano a crear o modificar).(extensión del archivo)
+code (abre visual studio)
 
 git init (crear repositorio en carpeta local)
 git status
