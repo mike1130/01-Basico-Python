@@ -18,18 +18,16 @@ def Inicio():
     
     if opcion == 1:
         moneda = 'pesos colombianos'
-        cambio = conversor(moneda)
-        print(f"La cantidad de {cambio[1]} {moneda} en dólares es de {cambio[0]} USD")
     elif opcion == 2:
         moneda = 'pesos argentinos'
-        cambio = conversor(moneda)
-        print(f"La cantidad de {cambio[1]} {moneda} en dólares es de {cambio[0]} USD")
     elif opcion == 3:
-        moneda = 'pesos mexicans'
-        cambio = conversor(moneda)
-        print(f"La cantidad de {cambio[1]} {moneda} en dólares es de {cambio[0]} USD")
+        moneda = 'pesos mexicanos'
     else:
-        pass
+        print(f'La opción no es valida')
+
+    if opcion == 1 or opcion == 2 or opcion == 3 :
+        cambio = conversor(moneda)
+        print(f'La cantidad de {cambio[1]} {moneda} en dólares es de {cambio[0]} USD')
 
 def conversor (moneda):
     pesos = round(float(input(f'Cuánto dinero en {moneda} desea convertir a dólares: ')), 2)
