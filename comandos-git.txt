@@ -1,35 +1,83 @@
 Ctrl + L (limpia la consola)
+
 cd (change directory = regresa a la carpeta origen del sistema)
+
 cd (carpeta donde se quiere entrar)/
+
 cd .. (regresa a la carpeta anterior)
+
 ls (list = ver las carpetas y archivos de la carpeta)
+
 ls -al (permite ver los archivos de una carpeta sean ocultos o no)
+
 mkdir (make directory = nombre de la carpeta que se desea crear)
+
 vim (nombre archivo plano a crear o modificar).(extensión del archivo)
+
 code (abre visual studio)
 
-git init (crear repositorio en carpeta local)
+---------GIT-------------
+git init (crear repositorio en carpeta local *.git)
+
 git status
+
 git add . (Añade todos los archivos del repositorio al stagging)
+
 git commit -a -m “(comentar que se hizo de nuevo)”
+
 git log (ver el historial de cambios de la rama)
 
-git branch (permite ver las ramas creadas en el repositorio local)
 git branch (nombre de la rama a crear)
+
+git branch (permite ver las ramas creadas en el repositorio local)
+
+Git branch -r (ramas remotas)
+
+Git branch -a (todas las ramas)
+
 git checkout (rama a la que se desea cambiar)
+
+git branch -D (rama a eliminar)
 
 (Fusionar rama secundaria con principal)
 git checkout ‘master’
-Git merge (rama que se desea fusionar con la master o en su defecto la que se coloca antes)
 
+----MERGE-----
+Git merge (rama que se desea fusionar con la master o en su defecto la que se coloca antes)
+1. Git checkout (rama donde quedaran los cambios)
+2. Git merge (rama que se fusionará)
+
+-----STASH----- 
+1. Se realizan los cambios en el código y se guardan, NO SE REALIZA COMMIT
+2. Git stash se regresa a lo que se tenía antes y los nuevos cambios se guardan en memoria flotante
+3. Git stash list se verifica que hay un trabajo en proceso WIP
+4A. Git stash branch (nombre de la rama) se usa para crear una rama con lo que se tiene en la memoria flotante
+5A. Se realiza un commit si se creo la rama
+4B. Git stash drop borra lo que hay en memoria flotante
+
+Git stash (devuelve los cambios hechos en la rama donde estas sin que necesites enviar un commit de ellos y así poder cambiar a otra rama sin problemas)
+
+Git stash pop (rehace lo que se decimos con el comando anterior)
+
+Git stash drop (elimina lo que hay en memoria flotante)
+
+----TAG-----
 git tag -a (nombre del tag) -m “(mensaje del tag)”
+
 git push origin --tags (enviar tags a github)
+
 git tag -d (nombre del tag a eliminar)
+
 git push origin :refs/tags/(nombre del tag eliminado para actualizar en GitHub)
 
+----ARBOLITO------
 alias arbolito=“git log --all --graph --decorate --online”
 arbolito (permite ver la historia de la rama principal y ramas secundarias)
 
+gitk (otra manera de ver el historial)
+
+
+----GITHUB------
 git remote add (repositorio local a crear donde se traerán los archivos del siguiente enlace de github) (enlace de GitHub a clonar)
 
 alias github_relate=“git remote add origin “
@@ -41,7 +89,79 @@ github_allow (permite realizar el primer merge entre git y github)
 git remote -v (permite ver a cual dirección apunta el Origin)
 
 git pull origin (rama en GitHub que se desea traer a local y actualizar la que esta)
+
 git push origin (rama en Git local que se desea exportar a repositorio en GitHub)
 
 git clone (enlace de GitHub de repositorio publico de otra persona para ser copiado en el local)
+
+----REBASE----
+NO HACER NUNCA
+Git rebase master (con git checkout se selecciona la rama secundaria; con el anterior comando se corta la rama secundaria y se une a la master y desaparece la secundaria del logro)
+
+DESPUES
+Git rebase (rama secundaria) (estar en git checkout master)
+
+
+----CLEAN Duplicados-----
+Con este método no se borran las carpetas duplicadas pero si los archivos duplicados en ellas
+Git clean --dry-run (visualiza que se va a borrar en archivos duplicados)
+
+Git clean (borra los archivos duplicados)
+
+----.gitignore----
+Se crea un archivo en la carpeta principal con el nombre .gitignore y se pone en este
+*.(extensión que se desea omitir en el status de git)
+
+---cherry-pick----
+Git cherry-pick (código del commit ejecutado en otra rama y traído a la rama donde se encuentra uno)
+
+Pasar un commit de la rama pepe a la rama master
+1. Git checkout pepe
+2. Git log --oneline (se busca el código del commit que tiene el cambio deseado de la rama)
+3. Git checkout master
+4. Git cherry-pick (código)
+
+
+---Reconstruir un commit incompleto------
+Al realizar un commit con un trabajo incompleto se debe 
+1. Añadir el cambio o modificación al código 
+2. Git add (archivo que contiene el código)
+3. Git commit --amend (cambiar el mensaje si se quiere)
+
+
+----Reflog y Reset----
+Si eliminas algo archivos o ramas, cambias cosas, etc. has esto
+1. Has commit siempre
+2. git reflog (buscar el commit donde todo estaba bien)
+3. Copia el código de ese commit
+4. Git reset -hard (código del commit) (Se restauran los archivos y ramas borrados y las otras cosas)
+
+
+---buscar palabras----
+Git grep (palabra) te muestra donde se usó esa palabra
+
+Git grep -n (palabra) te muestra donde se usó esa palabra y la línea de código
+
+Git grep -c (palabra) cuenta cuantas veces se ha usado esa palabra
+
+Git log -s "(palabra)" busca donde se usó esa palabra en los commits
+
+
+-----Mostrar los commits y la cantidad por usuario----
+Git shortlong (muestra todos los commits hechos en el proyecto por usuario)
+
+Git shortlong -sn (enumera todos los commits)
+
+Git shortlong -sn --all --no-merges (enumera todos los commits y no incluye los merges)
+
+Git config --global alias.stats "shortly -sn --all --no-merges"
+Git stats (resumen de lo anterior)
+
+
+---función de comandos---
+Git (comando) --help
+
+
+---ver quién hizo qué----
+Git blame -c (archivo) -L(linea inicial),(linea final)
 
