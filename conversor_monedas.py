@@ -4,30 +4,39 @@ def Inicio():
         Este programa permite convertir una cantidad de dinero
         de una divisa a otra.
     """
-    opcion = 0
+    menu = """
+    Bienvenido al conversor de monedas 💰
 
-    while opcion == 0:
-        print(f'1. Convertir COP a USD')
-        print(f'2. Convertir USD a COP')
-        opcion = int(input('Escoge el método para conversión de moneda: '))
+    1 - Pesos colombianos
+    2 - Pesos argentinos
+    3 - Pesos mexicanos
 
-        if opcion == 1:
-            dinero = round(float(input('Cuánto dinero en COP desea convertir: ')), 2)
-            trm = round(float(input('Cuánto vale 1 COP en USD: ')), 2)
-            cambio = round(conversor(dinero, trm), 2)
-            print(f"La cantidad de {dinero} COP en dolares es de {cambio} USD")
-        elif opcion == 2:
-            dinero = round(float(input('Cuánto dinero en USD desea convertir: ')), 2)
-            trm = round(float(input('Cuánto vale 1 USD en COP: ')), 2)
-            cambio = round(conversor(dinero, trm), 2)
-            print(f"La cantidad de {dinero} USD en dolares es de {cambio} COP") 
-        else:
-            opcion = 0
+    Elige una opción: """
 
-def conversor (dinero, trm):
+    opcion = int(input(menu))
     
-    conversion = dinero / trm
-    return conversion
+    
+    if opcion == 1:
+        moneda = 'pesos colombianos'
+        cambio = conversor(moneda)
+        print(f"La cantidad de {cambio[1]} {moneda} en dólares es de {cambio[0]} USD")
+    elif opcion == 2:
+        moneda = 'pesos argentinos'
+        cambio = conversor(moneda)
+        print(f"La cantidad de {cambio[1]} {moneda} en dólares es de {cambio[0]} USD")
+    elif opcion == 3:
+        moneda = 'pesos mexicans'
+        cambio = conversor(moneda)
+        print(f"La cantidad de {cambio[1]} {moneda} en dólares es de {cambio[0]} USD")
+    else:
+        pass
+
+def conversor (moneda):
+    pesos = round(float(input(f'Cuánto dinero en {moneda} desea convertir a dólares: ')), 2)
+    trm = round(float(input(f'Cuánto vale 1 USD en {moneda}: ')), 2)
+
+    conversion = round(pesos / trm, 2)
+    return conversion, pesos
    
 if __name__ == '__main__':
     Inicio()
