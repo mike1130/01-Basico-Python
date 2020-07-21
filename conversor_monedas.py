@@ -15,7 +15,6 @@ def Inicio():
 
     opcion = int(input(menu))
     
-    
     if opcion == 1:
         moneda = 'pesos colombianos'
     elif opcion == 2:
